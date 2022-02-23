@@ -23,6 +23,9 @@ module.exports = {
         type: Sequelize.TEXT,
         isUrl: true
       },
+      isDeleted: {
+        type: Sequelize.BOOLEAN,
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

@@ -1,4 +1,5 @@
 'use strict';
+const { BOOLEAN } = require('sequelize');
 const {
   Model
 } = require('sequelize');
@@ -12,7 +13,8 @@ module.exports = (sequelize, DataTypes) => {
     name: DataTypes.STRING,
     description: DataTypes.TEXT,
     place: DataTypes.STRING,
-    img: DataTypes.TEXT
+    img: DataTypes.TEXT,
+    isDeleted: DataTypes.BOOLEAN,
   }, {
     sequelize,
     modelName: 'Tea',
