@@ -19,7 +19,7 @@
       <div class="card-body">
         <div class="input-group mb-3">
           <form id="commentForm" name="commentForm" class="commentText" action="/tea/{{this.id}}" method="POST">
-            <input name="comment" type="text" class="form-control" placeholder="Recipient's username"
+            <input name="comment" type="text" class="form-control" placeholder="You're best comment"
               aria-label="Recipient's username" aria-describedby="button-addon2">
             <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Отправить</button>
           </form>
@@ -27,6 +27,7 @@
         <p class="card-text"><small class="text-muted">Последнее обновление {{this.timeAnswer}}</small></p>
         <div id="dataID">
           {{#each comment}}
+          <h5>{{this.userId}}</h5>
           <p id="{{this.id}}">{{this.text}}</p>
           {{/each}}
         </div>
