@@ -2,19 +2,21 @@
 const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
-    static associate(model) {}
+    static associate({Comment}) {
+      this.hasMany(Comment, {foreignKey: 'user_id'})
+    }
   }
   User.init(
     {
       name: DataTypes.STRING,
       email: DataTypes.STRING,
       password: DataTypes.STRING,
-      role_id: DataTypes.INTEGER,
+      isAdmin: DataTypes.BOOLEAN,
     },
     {
       sequelize,
       modelName: 'User',
-    }
+    },
   );
   return User;
 };

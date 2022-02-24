@@ -12,15 +12,47 @@
       crossorigin='anonymous'
 
     />
+
     <script defer src="https://api-maps.yandex.ru/2.1/?apikey=95d7fff5-f316-404e-8382-f26a9a59fb87&lang=ru_RU" type="text/javascript"></script>
     <script defer src="/js/map.js"></script>
    
     </script>
     <title>Tea Room</title>
+
+ 
+   
+   
+
+    <title>TeaRoom</title>
+
   </head>
   <body>
-    <div id="map" style="width: 600px; height: 400px"></div>
-   
+   <div id="map" style="width: 600px; height: 400px"></div>
+    <header style="background-color: rgb(235, 229, 209);" >
+      <div class="container">  
+        <div class="row">
+          
+        {{#if userName}}
+          <div class="col-sm" style="text-align: right; margin-top: 20px;">
+            <a href="/users/profile/{{userId}}" style=" padding: 10px"> <button type="button" class="btn btn-outline-secondary">Личный кабинет</button></a>
+            <a href="/users/logout" style=" padding: 10px"><button type="button" class="btn btn-outline-secondary">Выход</button></a>
+          </div>
+        {{else}}
+        <div class="col-sm" style="text-align: right; margin-top: 20px;">
+          <a href="/users/signup" style=" padding: 10px"><button type="button" class="btn btn-outline-secondary">Регистрация</button></a>
+          <a href="/users/signin" style=" padding: 10px"><button type="button" class="btn btn-outline-secondary">Вход</button></a>
+        </div>
+        {{/if}}
+        </div>
+        <div >
+          <h4 style="padding: 20px;" > Tea Room </h4>
+        </div>
+
+       </div>
+       </div>
+      </div>
+    </header>
+
     {{{body}}}
   </body>
 </html>
