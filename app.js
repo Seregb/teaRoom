@@ -7,12 +7,14 @@ const FileStore = require('session-file-store')(session);
 require('dotenv').config();
 const indexRouter = require('./routes/index.js');
 const userRouter = require('./routes/user.js');
+
 const app = express();
 
 app.set('view engine', 'hbs');
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public')));
 hbs.registerPartials(path.join('views', 'partials'));
 
 app.use('/users', userRouter);
