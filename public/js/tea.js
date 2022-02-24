@@ -2,8 +2,11 @@ const { commentForm } = document.forms;
 const commentPhrase = document.querySelector('#dataID');
 console.log(commentPhrase);
 
-function addComment({ text, id }) {
-  return `<p id=${id}>${text}</p>`;
+function addComment(text, id, name) {
+  return `
+  <h5>${name}</h5>
+  <p id=${id}>${text}</p>
+  `;
 }
 
 commentForm?.addEventListener('submit', async (e) => {
@@ -17,7 +20,7 @@ commentForm?.addEventListener('submit', async (e) => {
     body: JSON.stringify({ comment }),
   });
   const data = await response.json();
-  console.log(data);
+  console.log(data.userComm.text, data.userComm.id, data.user.name);
 
-  commentPhrase.insertAdjacentHTML('afterbegin', addComment(data));
+  commentPhrase.insertAdjacentHTML('afterbegin', addComment(data.userComm.text, data.userComm.id, data.user.name));
 });
