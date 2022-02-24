@@ -45,15 +45,17 @@ router.post('/signin', async (req, res) => {
 
 router.get('/profile/:id', async (req, res) => {
   const user = await User.findByPk(req.params.id);
-  res.render('profile', { user });
-});
+  const isAdmin = (user.isAdmin === true)
+  res.render('profile', {user, admin: isAdmin})
+})
 
-// //ВЫХОД
-// router.get('/logout', (req, res) => {
-//   // при logout сессия удаляется из папки sessions
-// req.session.destroy();
-// res.clearCookie('userCookie');
-// res.redirect('/');
-// })
+
+//ВЫХОД
+router.get('/logout', (req, res) => {
+  // при logout сессия удаляется из папки sessions
+req.session.destroy();
+res.clearCookie('userCookie');
+res.redirect('/');
+})
 
 module.exports = router;
