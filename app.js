@@ -5,26 +5,26 @@ const path = require('path');
 const hbs = require('hbs');
 require('dotenv').config();
 
+const cookieParser = require('cookie-parser');
+const session = require('express-session');
+const FileStore = require('session-file-store')(session);
 const indexRouter = require('./routes/index.js');
 const teaRouter = require('./routes/tea.js');
 const userRouter = require('./routes/user.js');
 const adminRouter = require('./routes/admin');
 const { addLocals } = require('./middleware/allmidleware');
-const cookieParser = require('cookie-parser');
-const session = require('express-session');
-const FileStore = require('session-file-store')(session);
 
 const app = express();
 
 app.set('view engine', 'hbs');
 
 app.use(logger('dev'));
-app.use(express.static(path.join(__dirname, 'public')));
+// app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(path.join(process.env.PWD, 'public')));
 hbs.registerPartials(path.join('views', 'partials'));
-app.use('/tea', teaRouter);
+// app.use(express.static('public'));
 
 app.use(
   session({
@@ -34,11 +34,12 @@ app.use(
     cookie: { secure: false }, // не HTTPS
     name: 'userCookie', // имя сессионной куки
     store: new FileStore(), // хранилище для куков - папка с файлами
-  })
+  }),
 );
 
 app.use(addLocals);
 
+app.use('/tea', teaRouter);
 app.use('/users', userRouter);
 app.use('/', indexRouter);
 app.use('/admin', adminRouter);
