@@ -1,5 +1,5 @@
 <script defer src="/js/tea.js"></script>
-<div class="card mb-3" style="max-width: 2540px;">
+<div class="card mb-3" style="max-width: 2540px; color:black; opacity: 0.8">
   <div class="row g-0">
     <div class="col-md-4">
       <img src="/{{img}}" class="img-fluid rounded-start" alt="tea_Photo">
@@ -12,18 +12,24 @@
     </div>
   </div>
 </div>
-<div class="card mb-3" style="max-width: 1540px;">Comments
+<div class="card mb-3" style="max-width: 2540px; color:black; opacity: 0.9; display: flex; align-items: center;">
+  Comments
   <div>
     <div class="col-ml-8">
       <div class="card-body">
         <div class="input-group mb-3">
-          <form id="commentForm" name="commentForm" class="commentText" action="/users/{{this.id}}" method="POST">
+          <form id="commentForm" name="commentForm" class="commentText" action="/tea/{{this.id}}" method="POST">
             <input name="comment" type="text" class="form-control" placeholder="Recipient's username"
               aria-label="Recipient's username" aria-describedby="button-addon2">
             <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Отправить</button>
           </form>
         </div>
-        <p class="card-text"><small class="text-muted">Последнее обновление 1 мин. назад</small></p>
+        <p class="card-text"><small class="text-muted">Последнее обновление {{this.timeAnswer}}</small></p>
+        <div id="dataID">
+          {{#each comment}}
+          <p id="{{this.id}}">{{this.text}}</p>
+          {{/each}}
+        </div>
       </div>
     </div>
   </div>
