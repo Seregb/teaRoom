@@ -43,6 +43,7 @@ app.use('/tea', teaRouter);
 app.use('/users', userRouter);
 app.use('/', indexRouter);
 app.use('/admin', adminRouter);
+app.use('/tea', teaRouter);
 app.use(cookieParser());
 
 // app.use((req, res, next) => {
