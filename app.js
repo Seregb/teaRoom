@@ -4,13 +4,16 @@ const sha = require('sha256');
 const path = require('path');
 const hbs = require('hbs');
 require('dotenv').config();
+
 const indexRouter = require('./routes/index.js');
+const teaRouter = require('./routes/tea.js');
 const userRouter = require('./routes/user.js');
 const adminRouter = require('./routes/admin');
 const {addLocals} = require('./middleware/allmidleware')
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const FileStore = require('session-file-store')(session);
+
 
 const app = express();
 
@@ -22,7 +25,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.static(path.join(process.env.PWD, 'public')));
 hbs.registerPartials(path.join('views', 'partials'));
-
+app.use('/tea', teaRouter);
 
 app.use(session({
   secret: 'apojrglkdzfng;sakg', // строка для шифрования сессии
