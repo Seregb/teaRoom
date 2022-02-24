@@ -9,10 +9,19 @@ module.exports = (sequelize, DataTypes) => {
   }
   Tea.init(
     {
-      name: DataTypes.STRING,
-      description: DataTypes.TEXT,
+      name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
+      description: {
+        type: DataTypes.TEXT,
+        allowNull: false,
+      },
       place: DataTypes.STRING,
-      img: DataTypes.TEXT,
+      img: {
+        type: DataTypes.TEXT,
+        isUrl: true,
+      },
       isDeleted: DataTypes.BOOLEAN,
     },
     {
