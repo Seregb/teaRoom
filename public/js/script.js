@@ -70,3 +70,11 @@ postContainer.addEventListener('click', async (event) => {
     }
   }
 });
+
+
+const img = document.querySelector('.card-img-top');
+console.log(img);
+img.addEventListener('click', (e) => {
+  const teaId = e.target.closest('div').dataset.id;
+  window.location.replace(`/tea/${teaId}`);
+})
