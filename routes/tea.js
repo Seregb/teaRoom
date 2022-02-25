@@ -21,6 +21,8 @@ function timer(timeCom) {
 router
   .route('/:id')
   .get(async (req, res) => {
+    let time;
+    let timeAnswer;
     const teaId = req.params.id;
     try {
       const {
@@ -29,15 +31,18 @@ router
       const comment = await Comment.findAll({
         include: [{ model: User }, { model: Tea }], where: { tea_id: teaId }, order: [['updatedAt', 'DESC']], raw: true,
       });
-      const time = Math.floor(timer(comment[0].updatedAt) / 100000);
-      const timeAnswer = time === 0 ? 'было только что' : `${time} мин. назад`;
+      console.log(comment);
+      if (comment.length > 0) {
+        time = Math.floor(timer(comment[0].updatedAt) / 100000);
+        timeAnswer = time === 0 ? 'было только что' : `${time} мин. назад`;
+      }
       const { userName } = req.session;
 
       return res.render('tea', {
         comment, id, name, description, img, timeAnswer, time, place, userName,
       });
     } catch (err) {
-      // console.log(err);
+      console.log(err);
     }
   })
   .post(async (req, res) => {
