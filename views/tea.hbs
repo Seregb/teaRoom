@@ -1,4 +1,3 @@
-<script defer src="/js/tea.js"></script>
 <div class="card mb-3" style="max-width: 2540px; color:black; opacity: 0.8">
   <div class="row g-0">
     <div class="col-md-4">
@@ -8,18 +7,19 @@
       <div class='card-body'>
         <h4 class='card-title'>{{this.name}}</h4>
         <p class='card-text'>{{this.description}}</p>
+        <h5 class='card-title'>Местоположение: {{this.place}}</h5>
       </div>
     </div>
   </div>
 </div>
-<div class="card mb-3" style="max-width: 2540px; color:black; opacity: 0.9; display: flex; align-items: center;">
-  Comments
-  <div>
+<div class="card mb-3" style="max-width: 2540px; color:black; opacity: 0.9; display: flex;">
+
+  <div style="padding: 10px 10px 10px 1030px"> Hi, {{userName}}, send your feedback:
     <div class="col-ml-8">
       <div class="card-body">
         <div class="input-group mb-3">
           <form id="commentForm" name="commentForm" class="commentText" action="/tea/{{this.id}}" method="POST">
-            <input name="comment" type="text" class="form-control" placeholder="You're best comment"
+            <input style="weight: 100px" name="comment" type="text" class="form-control" placeholder="Send your comment"
               aria-label="Recipient's username" aria-describedby="button-addon2">
             <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Отправить</button>
           </form>
@@ -27,12 +27,18 @@
         <p class="card-text"><small class="text-muted">Последнее обновление {{this.timeAnswer}}</small></p>
         <div id="dataID">
           {{#each comment}}
-          <h5>{{this.userId}}</h5>
-          <p id="{{this.id}}">{{this.text}}</p>
+          <figure class="text-end">
+            <blockquote class="blockquote">
+              <p>{{text}}</p>
+            </blockquote>
+            <figcaption class="blockquote-footer">
+              {{'User.name'}}
+            </figcaption>
+          </figure>
           {{/each}}
         </div>
       </div>
     </div>
   </div>
 </div>
-git push origin HEAD:admin-route-+-write-tea-to-base
+<script defer src="/js/tea.js"></script>
