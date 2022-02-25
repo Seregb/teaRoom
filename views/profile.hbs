@@ -1,7 +1,70 @@
-<h4 style=" padding: 40px; text-align: center; ;" >Добро пожаловать, {{user.name}}!</h4>
-
-
+<script defer src='/js/script.js'></script>
+<h4 style=" padding: 40px; text-align: center; ;">Добро пожаловать, {{user.name}}!</h4>
 
 {{#if admin}}
 <h2 style="margin-top: 350px; color:beige">HELLO ADMIN</h2>
+<div class='container m-5'>
+  <div class='row'>
+    <div class='col'>
+      <form name='postForm'>
+        <div class='mb-3'>
+          <label for='exampleInputName' class='form-label'>tea name</label>
+          <input name='name' type='text' class='form-control' id='exampleInputText' required />
+        </div>
+        <div class='mb-3'>
+          <label for='exampleInputText' class='form-label'>tea description</label>
+          <input name='description' type='text' class='form-control' id='exampleInputText' required />
+        </div>
+        <div class='mb-3'>
+          <label for='exampleInputTag' class='form-label'>cultivation place</label>
+          <input name='place' type='text' class='form-control' id='exampleInputTag' required />
+        </div>
+        <div class='mb-3'>
+          <label for='exampleInputTag' class='form-label'>comment</label>
+          <input name='comment' type='text' class='form-control' id='exampleInputTag' />
+        </div>
+        <div class='mb-3'>
+          <label for='exampleInputImg' class='form-label'>tea img</label>
+          <input name='img' type='file' class='form-control' id='exampleInputImg' />
+        </div>
+        <button type='submit' class='btn btn-primary'>Submit</button>
+      </form>
+    </div>
+    <div class='col' id='post-container'>
+      <div id='wrapper'>
+        {{#each posts}}
+        <div data-id={{id}} class='card' style='width: 18rem; border:solid 2px; border-color:rgb(188, 23, 230)'>
+          <img src='/{{img}}' class='card-img-top' alt={{name}} />
+          <div class='card-body'>
+            <h5 class='card-title'>{{name}}</h5>
+            <h6 class='card-text' style="display:block; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;">
+              {{description}}</h6>
+            {{#each Tags}}
+            <span class='card-text'>{{name}}</span>
+            {{/each}}
+            <div>
+              <button id='delete-button' type='button' class='btn btn-danger'>delete</button>
+              <button id='edit-button' type='button' class='btn btn-warning'>edit</button>
+            </div>
+          </div>
+        </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</div>
+{{else}}
+{{#each comment}}
+<div class="card" style="opacity: 0.9; margin: 10px 100px 0px 100px; border-radius: 20px; width:fit-content">
+  <div class="card-header">
+    {{'Tea.name'}}
+  </div>
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <p>{{text}}</p>
+      <footer class="blockquote-footer">{{'User.name'}}</footer>
+    </blockquote>
+  </div>
+</div>
+{{/each}}
 {{/if}}

@@ -24,4 +24,11 @@ const deepCheckUser = (req, res, next) => {
   }
 };
 
+const checkAdmin = () => {
+  if (req.session.isAdmin === true) {
+    next();
+  }
+
+}
+
 module.exports = { checkUser, deepCheckUser, addLocals };

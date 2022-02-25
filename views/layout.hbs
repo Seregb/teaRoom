@@ -39,13 +39,15 @@
           
         {{#if userName}}
           <div class="col-sm" style="text-align: right; margin-top: 20px;">
-            <a href="/users/profile/{{userId}}" style=" padding: 10px"> <button style="f" type="button" class="btn btn-secondary" id="private">Личный кабинет</button></a>
-            <a href="/users/logout" style=" padding: 10px"><button style="" type="button" class="btn btn-secondary" id="logout">Выход</button></a>
+            <a href="/users/profile/{{userId}}" style=" padding: 10px"> <button style="f" type="button" class="btn btn-secondary">Личный кабинет</button></a>
+            <a href="/users/logout" style=" padding: 10px"><button style="" type="button" class="btn btn-secondary">Выход</button></a>
+            <a href="/" style=" padding: 10px"><button style="" type="button" class="btn btn-secondary">Домой</button></a>
           </div>
         {{else}}
         <div class="col-sm" style="text-align: right; margin-top: 20px;">
-          <a href="/users/signup" style=" padding: 10px"><button style="" type="button" class="btn btn-secondary" id="signup">Регистрация</button></a>
-          <a href="/users/signin" style=" padding: 10px"><button style="f" type="button" class="btn btn-secondary" id="signin">Вход</button></a>
+          <a href="/users/signup" style=" padding: 10px"><button style="" type="button" class="btn btn-secondary">Регистрация</button></a>
+          <a href="/users/signin" style=" padding: 10px"><button style="f" type="button" class="btn btn-secondary">Вход</button></a>
+          <a href="/" style=" padding: 10px"><button style="" type="button" class="btn btn-secondary">Домой</button></a>
         </div>
         {{/if}}
         </div>
