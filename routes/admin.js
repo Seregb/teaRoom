@@ -22,7 +22,6 @@ const upload = multer({ storage });
 router.get('/', async (req, res) => {
   try {
     const posts = await Tea.findAll();
-    console.log('0000000', posts);
     // const preparedPosts = posts.map((el) => ({
     //   id: el.id,
     //   img: el.img,
@@ -53,6 +52,21 @@ router.post('/', upload.single('img'), async (req, res) => {
     });
     res.json(addTea);
     // console.log(addTea);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+});
+// /admin
+router.delete('/tea/:id', async (req, res) => {
+  // console.log(req.params.id);
+  try {
+    await Tea.destroy({ where: { id: Number(req.params.id) } });
+    // await Tea.update(
+    //   { isDeleted: true },
+    //   { where: { id: Number(req.params.id) } }
+    // );
+    res.sendStatus(200);
+    // res.json({ a: 'a' });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
