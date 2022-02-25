@@ -3,8 +3,6 @@ const { User, Tea, Comment } = require('../db/models');
 const sha256 = require('sha256');
 const { checkUser, deepCheckUser } = require('../middleware/allmidleware');
 
-
-
 //РЕГИСТРАЦИЯ
 router.get('/signup', async (req, res) => {
   res.render('signup');
@@ -12,9 +10,10 @@ router.get('/signup', async (req, res) => {
 
 router.post('/signup', async (req, res) => {
   const { name, email } = req.body;
-  console.log(name);
-  const password = sha256(req.body.password); // шифруем пароль
+  console.log(req.body);
+  const password = sha256(req.body.password);
   const doesItExist = await User.findOne({ where: { email } });
+  console.log(doesItExist);
   if (!doesItExist) {
     const user = await User.create({ name, email, password, isAdmin: false });
     req.session.userName = user.name;
@@ -26,8 +25,6 @@ router.post('/signup', async (req, res) => {
   return res.redirect('/users/signup');
 });
 
-
-//ВХОД
 router.get('/signin', (req, res) => {
   res.render('signin');
 });
@@ -50,17 +47,16 @@ router.post('/signin', async (req, res) => {
 
 router.get('/profile/:id', async (req, res) => {
   const user = await User.findByPk(req.params.id);
-  const isAdmin = (user.isAdmin === true)
-  res.render('profile', {user, admin: isAdmin})
-})
-
+  const isAdmin = user.isAdmin === true;
+  res.render('profile', { user, admin: isAdmin });
+});
 
 //ВЫХОД
 router.get('/logout', (req, res) => {
   // при logout сессия удаляется из папки sessions
-req.session.destroy();
-res.clearCookie('userCookie');
-res.redirect('/');
-})
+  req.session.destroy();
+  res.clearCookie('userCookie');
+  res.redirect('/');
+});
 
 module.exports = router;

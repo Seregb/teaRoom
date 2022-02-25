@@ -7,6 +7,20 @@ postForm.addEventListener('submit', async (event) => {
     method: 'POST',
     body: formData,
   });
+  const { name, description, place, comment, img, id } = await response.json();
+  wrapper.innerHTML += `
+  <div data-id="${id}" class="card" style="width: 18rem; border:solid 2px; border-color:rgb(188, 23, 230)">
+            <img src="${img}" class="card-img-top" alt="kek">
+            <div class="card-body">
+              <h5 class="card-title">${name}</h5>
+              <h4 class="card-text">${description}</h4>
+              <div>
+                <button id="delete-button" type="button" class="btn btn-danger">delete</button>
+                <button id="edit-button" type="button" class="btn btn-warning">edit</button>
+              </div>
+            </div>
+          </div>
+  `;
 });
 
 // async function getPosts() {
@@ -71,10 +85,9 @@ postContainer.addEventListener('click', async (event) => {
   }
 });
 
-
 const img = document.querySelector('.card-img-top');
 console.log(img);
 img.addEventListener('click', (e) => {
   const teaId = e.target.closest('div').dataset.id;
   window.location.replace(`/tea/${teaId}`);
-})
+});

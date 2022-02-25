@@ -40,6 +40,7 @@ router.get('/', async (req, res) => {
 });
 
 router.post('/', upload.single('img'), async (req, res) => {
+  console.log(req.body);
   try {
     const { name, description, place, comment } = req.body;
     // console.log(req);
@@ -51,7 +52,7 @@ router.post('/', upload.single('img'), async (req, res) => {
       img: `uploads/${req.file.originalname}`,
     });
     res.json(addTea);
-    // console.log(addTea);
+    console.log(addTea);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
