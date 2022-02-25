@@ -3,6 +3,9 @@ const { User, Tea, Comment } = require('../db/models');
 const sha256 = require('sha256');
 const { checkUser, deepCheckUser } = require('../middleware/allmidleware');
 
+
+
+//РЕГИСТРАЦИЯ
 router.get('/signup', async (req, res) => {
   res.render('signup');
 });
@@ -23,6 +26,8 @@ router.post('/signup', async (req, res) => {
   return res.redirect('/users/signup');
 });
 
+
+//ВХОД
 router.get('/signin', (req, res) => {
   res.render('signin');
 });
