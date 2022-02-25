@@ -4,8 +4,14 @@ console.log(commentPhrase);
 
 function addComment(text, id, name) {
   return `
-  <h5>${name}</h5>
-  <p id=${id}>${text}</p>
+  <figure class="text-end">
+    <blockquote class="blockquote">
+      <p>${text}</p>
+    </blockquote>
+    <figcaption class="blockquote-footer">
+      ${name}</cite>
+    </figcaption>
+  </figure>
   `;
 }
 
@@ -20,7 +26,7 @@ commentForm?.addEventListener('submit', async (e) => {
     body: JSON.stringify({ comment }),
   });
   const data = await response.json();
-  console.log(data.userComm.text, data.userComm.id, data.user.name);
+  // console.log(data.userComm.text, data.userComm.id, data.user.name);
 
   commentPhrase.insertAdjacentHTML('afterbegin', addComment(data.userComm.text, data.userComm.id, data.user.name));
 });
