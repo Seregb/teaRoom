@@ -12,6 +12,7 @@ function init() {
     hintContent: 'Hint',
     balloonContent: 'Ballon',
   });
+  
   const mySedondPlacemark = new ymaps.Placemark([55.6, 37.6], {
     // hintContent: 'Hint',
     balloonContent: 'fdwfsds',
@@ -58,4 +59,8 @@ function init() {
     });
     console.log(mySedondPlacemark.properties);
   }
+  myMap.geoObjects.add(myPlacemark);
+  myMap.geoObjects.add((new ymaps.Placemark([56.833436, 35.715175], {
+    balloonContent: '<strong><a href=http://localhost:3000/tea/1 >Каркаде</strong>',
+  })));
 }

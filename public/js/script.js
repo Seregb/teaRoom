@@ -88,6 +88,11 @@ postContainer.addEventListener('click', async (event) => {
 const img = document.querySelector('.card-img-top');
 console.log(img);
 img.addEventListener('click', (e) => {
+
+const allimg = document.querySelector('#wrapper');
+console.log(allimg);
+allimg.addEventListener('click', (e) => {
+  // console.log(e.target.closest('div'));
   const teaId = e.target.closest('div').dataset.id;
   window.location.replace(`/tea/${teaId}`);
 });

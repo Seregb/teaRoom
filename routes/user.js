@@ -46,10 +46,19 @@ router.post('/signin', async (req, res) => {
 });
 
 router.get('/profile/:id', async (req, res) => {
+  const comment = await Comment.findAll({
+    include: [{ model: User }, { model: Tea }], order: [['updatedAt', 'DESC']], raw: true,
+  });
+  console.log(comment);
   const user = await User.findByPk(req.params.id);
-  const isAdmin = user.isAdmin === true;
-  res.render('profile', { user, admin: isAdmin });
-});
+
+  //const isAdmin = user.isAdmin === true;
+  //res.render('profile', { user, admin: isAdmin });
+//});
+
+  const isAdmin = (user.isAdmin === true)
+  res.render('profile', { comment, user, admin: isAdmin })
+})
 
 //ВЫХОД
 router.get('/logout', (req, res) => {
@@ -58,5 +67,6 @@ router.get('/logout', (req, res) => {
   res.clearCookie('userCookie');
   res.redirect('/');
 });
+
 
 module.exports = router;

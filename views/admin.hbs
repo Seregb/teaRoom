@@ -1,88 +1,48 @@
-<h1>kekqqq</h1>
+<h1 style="margin-left: 5%;">Форма добавления чая</h1>
 <div class='container m-5'>
   <div class='row'>
     <div class='col'>
       <form name='postForm'>
         <div class='mb-3'>
           <label for='exampleInputName' class='form-label'>tea name</label>
-          <input
-            name='name'
-            type='text'
-            class='form-control'
-            id='exampleInputText'
-            required
-          />
+          <input name='name' type='text' class='form-control' id='exampleInputText' required />
         </div>
         <div class='mb-3'>
           <label for='exampleInputText' class='form-label'>tea description</label>
-          <input
-            name='description'
-            type='text'
-            class='form-control'
-            id='exampleInputText'
-            required
-          />
+          <input name='description' type='text' class='form-control' id='exampleInputText' required />
         </div>
         <div class='mb-3'>
           <label for='exampleInputTag' class='form-label'>cultivation place</label>
-          <input
-            name='place'
-            type='text'
-            class='form-control'
-            id='exampleInputTag'
-            required
-          />
+          <input name='place' type='text' class='form-control' id='exampleInputTag' required />
         </div>
         <div class='mb-3'>
           <label for='exampleInputTag' class='form-label'>comment</label>
-          <input
-            name='comment'
-            type='text'
-            class='form-control'
-            id='exampleInputTag'
-          />
+          <input name='comment' type='text' class='form-control' id='exampleInputTag' />
         </div>
         <div class='mb-3'>
           <label for='exampleInputImg' class='form-label'>tea img</label>
-          <input
-            name='img'
-            type='file'
-            class='form-control'
-            id='exampleInputImg'
-          />
+          <input name='img' type='file' class='form-control' id='exampleInputImg' />
         </div>
-        <button type='submit' class='btn btn-primary'>Submit</button>
+        <button style="" type="button" class="btn btn-secondary"> Добавить</button>
       </form>
     </div>
     <div class='col' id='post-container'>
       <div id='wrapper'>
         {{#each posts}}
-          <div
-            data-id={{id}}
-            class='card'
-            style='width: 18rem; border:solid 2px; border-color:rgb(188, 23, 230)'
-          >
-            <img src='/{{img}}' class='card-img-top' alt={{name}} />
-            <div class='card-body'>
-              <h5 class='card-title'>{{name}}</h5>
-              <h4 class='card-text'>{{description}}</h4>
-              {{#each Tags}}
-                <span class='card-text'>{{name}}</span>
-              {{/each}}
-              <div>
-                <button
-                  id='delete-button'
-                  type='button'
-                  class='btn btn-danger'
-                >delete</button>
-                <button
-                  id='edit-button'
-                  type='button'
-                  class='btn btn-warning'
-                >edit</button>
-              </div>
+        <div data-id={{id}} class='card' style='width: 18rem; border:solid 2px; border-color:rgb(188, 23, 230)'>
+          <img src='/{{img}}' class='card-img-top' alt={{name}} />
+          <div class='card-body'>
+            <h5 class='card-title'>{{name}}</h5>
+            <h6 class='card-text' style="display:block; overflow:hidden; white-space:nowrap; text-overflow:ellipsis;">{{description}}</h6>
+            {{#each Tags}}
+            <span class='card-text'>{{name}}</span>
+            {{/each}}
+            <div>
+              <button id='delete-button' type='button' class='btn btn-danger'>delete</button>
+              <button id='edit-button' type='button' class='btn btn-warning'>edit</button>
             </div>
           </div>
+        </div>
         {{/each}}
       </div>
     </div>

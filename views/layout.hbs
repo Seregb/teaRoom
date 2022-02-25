@@ -10,6 +10,7 @@
       integrity='sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3'
       crossorigin='anonymous'
     />
+    <link rel="stylesheet" href="/css/style.css">
 
     <script defer src="https://api-maps.yandex.ru/2.1/?apikey=95d7fff5-f316-404e-8382-f26a9a59fb87&lang=ru_RU" type="text/javascript"></script>
     <script defer src="/js/map.js"></script> 
@@ -32,11 +33,13 @@
           <div class="col-sm" style="text-align: right; margin-top: 20px;">
             <a href="/users/profile/{{userId}}" style=" padding: 10px"> <button style="f" type="button" class="btn btn-secondary">Личный кабинет</button></a>
             <a href="/users/logout" style=" padding: 10px"><button style="" type="button" class="btn btn-secondary">Выход</button></a>
+            <a href="/" style=" padding: 10px"><button style="" type="button" class="btn btn-secondary">Домой</button></a>
           </div>
         {{else}}
         <div class="col-sm" style="text-align: right; margin-top: 20px;">
           <a href="/users/signup" style=" padding: 10px"><button style="" type="button" class="btn btn-secondary">Регистрация</button></a>
           <a href="/users/signin" style=" padding: 10px"><button style="f" type="button" class="btn btn-secondary">Вход</button></a>
+          <a href="/" style=" padding: 10px"><button style="" type="button" class="btn btn-secondary">Домой</button></a>
         </div>
         {{/if}}
         </div>
