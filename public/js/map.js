@@ -13,4 +13,7 @@ function init() {
     balloonContent: 'Ballon',
   });
   myMap.geoObjects.add(myPlacemark);
+  myMap.geoObjects.add((new ymaps.Placemark([56.833436, 35.715175], {
+    balloonContent: '<strong><a href=http://localhost:3000/tea/1 >Каркаде</strong>',
+  })));
 }

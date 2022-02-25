@@ -15,6 +15,7 @@ router.post('/signup', async (req, res) => {
   console.log(name);
   const password = sha256(req.body.password); // шифруем пароль
   const doesItExist = await User.findOne({ where: { email } });
+  console.log(doesItExist);
   if (!doesItExist) {
     const user = await User.create({ name, email, password, isAdmin: false });
     req.session.userName = user.name;
