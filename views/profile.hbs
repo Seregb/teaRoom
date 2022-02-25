@@ -1,1 +1,7 @@
-HELLO! name: {{user.name}}, email: {{user.email}}
+<h4 style=" padding: 40px; text-align: center; ;" >Добро пожаловать, {{user.name}}!</h4>
+
+
+
+{{#if admin}}
+<h2 style="margin-top: 350px; color:beige">HELLO ADMIN</h2>
+{{/if}}
